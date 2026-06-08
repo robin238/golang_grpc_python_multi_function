@@ -3,14 +3,18 @@ import grpc
 import os
 import sys
 
-sys.path.append(
-    os.path.abspath(
-        os.path.join(os.path.dirname(__file__), "..")
-    )
+ROOT_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..")
 )
 
-import service_pb2
-import service_pb2_grpc
+# tambahkan root project
+sys.path.insert(0, ROOT_DIR)
+
+# tambahkan folder python_pb
+sys.path.insert(0, os.path.join(ROOT_DIR, "python_pb"))
+
+from python_pb import service_pb2
+from python_pb import service_pb2_grpc
 
 class DemoService(service_pb2_grpc.DemoServiceServicer):
 
