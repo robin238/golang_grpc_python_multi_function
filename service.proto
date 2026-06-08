@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package demo;
+
+option go_package = "./pb";
+
+service DemoService {
+  rpc Add(AddRequest) returns (AddResponse);
+  rpc Uppercase(TextRequest) returns (TextResponse);
+}
+
+message AddRequest {
+  int32 a = 1;
+  int32 b = 2;
+}
+
+message AddResponse {
+  int32 result = 1;
+}
+
+message TextRequest {
+  string text = 1;
+}
+
+message TextResponse {
+  string result = 1;
+}
