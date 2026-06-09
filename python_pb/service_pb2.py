@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x04\x64\x65mo\"\"\n\nAddRequest\x12\t\n\x01\x61\x18\x01 \x01(\x05\x12\t\n\x01\x62\x18\x02 \x01(\x05\"\x1d\n\x0b\x41\x64\x64Response\x12\x0e\n\x06result\x18\x01 \x01(\x05\"\x1b\n\x0bTextRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\"\x1e\n\x0cTextResponse\x12\x0e\n\x06result\x18\x01 \x01(\t2m\n\x0b\x44\x65moService\x12*\n\x03\x41\x64\x64\x12\x10.demo.AddRequest\x1a\x11.demo.AddResponse\x12\x32\n\tUppercase\x12\x11.demo.TextRequest\x1a\x12.demo.TextResponseB\x06Z\x04./pbb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\rservice.proto\x12\x04\x64\x65mo\"\"\n\nAddRequest\x12\t\n\x01\x61\x18\x01 \x01(\x05\x12\t\n\x01\x62\x18\x02 \x01(\x05\"\x1d\n\x0b\x41\x64\x64Response\x12\x0e\n\x06result\x18\x01 \x01(\x05\"\x1b\n\x0bTextRequest\x12\x0c\n\x04text\x18\x01 \x01(\t\"\x1e\n\x0cTextResponse\x12\x0e\n\x06result\x18\x01 \x01(\t2\xa1\x01\n\x0b\x44\x65moService\x12*\n\x03\x41\x64\x64\x12\x10.demo.AddRequest\x1a\x11.demo.AddResponse\x12\x32\n\tUppercase\x12\x11.demo.TextRequest\x1a\x12.demo.TextResponse\x12\x32\n\tLowercase\x12\x11.demo.TextRequest\x1a\x12.demo.TextResponseB\x06Z\x04./pbb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -40,6 +40,6 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_TEXTREQUEST']._serialized_end=117
   _globals['_TEXTRESPONSE']._serialized_start=119
   _globals['_TEXTRESPONSE']._serialized_end=149
-  _globals['_DEMOSERVICE']._serialized_start=151
-  _globals['_DEMOSERVICE']._serialized_end=260
+  _globals['_DEMOSERVICE']._serialized_start=152
+  _globals['_DEMOSERVICE']._serialized_end=313
 # @@protoc_insertion_point(module_scope)

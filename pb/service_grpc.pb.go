@@ -21,6 +21,7 @@ const _ = grpc.SupportPackageIsVersion9
 const (
 	DemoService_Add_FullMethodName       = "/demo.DemoService/Add"
 	DemoService_Uppercase_FullMethodName = "/demo.DemoService/Uppercase"
+	DemoService_Lowercase_FullMethodName = "/demo.DemoService/Lowercase"
 )
 
 // DemoServiceClient is the client API for DemoService service.
@@ -29,6 +30,7 @@ const (
 type DemoServiceClient interface {
 	Add(ctx context.Context, in *AddRequest, opts ...grpc.CallOption) (*AddResponse, error)
 	Uppercase(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error)
+	Lowercase(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error)
 }
 
 type demoServiceClient struct {
@@ -59,12 +61,23 @@ func (c *demoServiceClient) Uppercase(ctx context.Context, in *TextRequest, opts
 	return out, nil
 }
 
+func (c *demoServiceClient) Lowercase(ctx context.Context, in *TextRequest, opts ...grpc.CallOption) (*TextResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TextResponse)
+	err := c.cc.Invoke(ctx, DemoService_Lowercase_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // DemoServiceServer is the server API for DemoService service.
 // All implementations must embed UnimplementedDemoServiceServer
 // for forward compatibility.
 type DemoServiceServer interface {
 	Add(context.Context, *AddRequest) (*AddResponse, error)
 	Uppercase(context.Context, *TextRequest) (*TextResponse, error)
+	Lowercase(context.Context, *TextRequest) (*TextResponse, error)
 	mustEmbedUnimplementedDemoServiceServer()
 }
 
@@ -80,6 +93,9 @@ func (UnimplementedDemoServiceServer) Add(context.Context, *AddRequest) (*AddRes
 }
 func (UnimplementedDemoServiceServer) Uppercase(context.Context, *TextRequest) (*TextResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method Uppercase not implemented")
+}
+func (UnimplementedDemoServiceServer) Lowercase(context.Context, *TextRequest) (*TextResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method Lowercase not implemented")
 }
 func (UnimplementedDemoServiceServer) mustEmbedUnimplementedDemoServiceServer() {}
 func (UnimplementedDemoServiceServer) testEmbeddedByValue()                     {}
@@ -138,6 +154,24 @@ func _DemoService_Uppercase_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _DemoService_Lowercase_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TextRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DemoServiceServer).Lowercase(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: DemoService_Lowercase_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DemoServiceServer).Lowercase(ctx, req.(*TextRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // DemoService_ServiceDesc is the grpc.ServiceDesc for DemoService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -152,6 +186,10 @@ var DemoService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Uppercase",
 			Handler:    _DemoService_Uppercase_Handler,
+		},
+		{
+			MethodName: "Lowercase",
+			Handler:    _DemoService_Lowercase_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

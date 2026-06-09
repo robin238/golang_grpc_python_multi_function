@@ -39,7 +39,7 @@ func main() {
 	addResp, err := client.Add(
 		ctx,
 		&pb.AddRequest{
-			A: 10,
+			A: 50,
 			B: 20,
 		},
 	)
@@ -50,7 +50,7 @@ func main() {
 
 	fmt.Println("Add Result:", addResp.Result)
 
-	textResp, err := client.Uppercase(
+	textRespUpper, err := client.Uppercase(
 		ctx,
 		&pb.TextRequest{
 			Text: "hello grpc",
@@ -61,5 +61,19 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("Uppercase:", textResp.Result)
+	fmt.Println("Uppercase:", textRespUpper.Result)
+
+	textRespLower, err := client.Lowercase(
+		ctx,
+		&pb.TextRequest{
+			Text: "HELLO GRPC FUNCTION LOWERCASE",
+		},
+	)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("Lowercase:", textRespLower.Result)
+
 }

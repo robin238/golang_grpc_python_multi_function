@@ -32,6 +32,13 @@ class DemoService(service_pb2_grpc.DemoServiceServicer):
             result=request.text.upper()
         )
 
+    def Lowercase(self, request, context):
+        print("Lowercase Request:", request.text)
+
+        return service_pb2.TextResponse(
+            result=request.text.lower()
+        )   
+
 
 def serve():
     server = grpc.server(

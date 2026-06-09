@@ -219,10 +219,11 @@ const file_service_proto_rawDesc = "" +
 	"\vTextRequest\x12\x12\n" +
 	"\x04text\x18\x01 \x01(\tR\x04text\"&\n" +
 	"\fTextResponse\x12\x16\n" +
-	"\x06result\x18\x01 \x01(\tR\x06result2m\n" +
+	"\x06result\x18\x01 \x01(\tR\x06result2\xa1\x01\n" +
 	"\vDemoService\x12*\n" +
 	"\x03Add\x12\x10.demo.AddRequest\x1a\x11.demo.AddResponse\x122\n" +
-	"\tUppercase\x12\x11.demo.TextRequest\x1a\x12.demo.TextResponseB\x06Z\x04./pbb\x06proto3"
+	"\tUppercase\x12\x11.demo.TextRequest\x1a\x12.demo.TextResponse\x122\n" +
+	"\tLowercase\x12\x11.demo.TextRequest\x1a\x12.demo.TextResponseB\x06Z\x04./pbb\x06proto3"
 
 var (
 	file_service_proto_rawDescOnce sync.Once
@@ -246,10 +247,12 @@ var file_service_proto_goTypes = []any{
 var file_service_proto_depIdxs = []int32{
 	0, // 0: demo.DemoService.Add:input_type -> demo.AddRequest
 	2, // 1: demo.DemoService.Uppercase:input_type -> demo.TextRequest
-	1, // 2: demo.DemoService.Add:output_type -> demo.AddResponse
-	3, // 3: demo.DemoService.Uppercase:output_type -> demo.TextResponse
-	2, // [2:4] is the sub-list for method output_type
-	0, // [0:2] is the sub-list for method input_type
+	2, // 2: demo.DemoService.Lowercase:input_type -> demo.TextRequest
+	1, // 3: demo.DemoService.Add:output_type -> demo.AddResponse
+	3, // 4: demo.DemoService.Uppercase:output_type -> demo.TextResponse
+	3, // 5: demo.DemoService.Lowercase:output_type -> demo.TextResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name

@@ -7,6 +7,7 @@ option go_package = "./pb";
 service DemoService {
   rpc Add(AddRequest) returns (AddResponse);
   rpc Uppercase(TextRequest) returns (TextResponse);
+  rpc Lowercase(TextRequest) returns (TextResponse);
 }
 
 message AddRequest {
